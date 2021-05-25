@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.bfcod.lost_and_found.dao.UserxDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="cn.bfcod.lost_and_found.entity.UserxEntity" id="userMap">
+        <result property="id" column="ID"/>
+        <result property="userName" column="User_Name"/>
+        <result property="password" column="Password"/>
+        <result property="nickName" column="Nick_Name"/>
+        <result property="status" column="Status"/>
+        <result property="createTime" column="Create_Time"/>
+        <result property="isNew" column="Is_New"/>
+        <result property="lastloginTime" column="LastLogin_Time"/>
+    </resultMap>
+
+
+</mapper>

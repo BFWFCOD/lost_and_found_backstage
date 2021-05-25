@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.bfcod.lost_and_found.dao.PickThingsDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="cn.bfcod.lost_and_found.entity.PickThingsEntity" id="pickThingsMap">
+        <result property="id" column="ID"/>
+        <result property="thingsName" column="Things_Name"/>
+        <result property="pickPlace" column="Pick_Place"/>
+        <result property="pickTime" column="Pick_Time"/>
+        <result property="thingsType" column="Things_Type"/>
+        <result property="thingsImg" column="Things_Img"/>
+        <result property="thingsDes" column="Things_Des"/>
+        <result property="storagePlace" column="Storage_Place"/>
+        <result property="phone" column="Phone"/>
+        <result property="qq" column="QQ"/>
+        <result property="email" column="Email"/>
+        <result property="publishTime" column="Publish_Time"/>
+        <result property="status" column="Status"/>
+        <result property="studentName" column="Student_Name"/>
+        <result property="studentNo" column="Student_No"/>
+        <result property="delStatus" column="Del_Status"/>
+    </resultMap>
+
+
+</mapper>

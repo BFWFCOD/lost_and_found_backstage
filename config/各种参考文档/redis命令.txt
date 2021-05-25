@@ -1,0 +1,99 @@
+Redis命令、安全设置建议：
+
+redis常用管理命令：
+获取所有键： keys *
+获取键总数： dbsize
+查询键是否存在：exists key1 key2
+删除键：del key1 key2
+查询键类型：type key1 key2
+移动键：move key1 db
+查询key的生命周期：
+    秒语法：ttl key  
+    毫秒语法：pttl key
+设置过期时间：
+    秒语法：expire key seconds
+    毫秒语法：pexpire key milliseconds
+设置永不过期：persist javastack
+更改键名称：rename key newkey
+
+字符串操作命令：
+存放键值：set key value
+获取键值：get key
+值递增/递减：incr key
+批量存放键值：mset key value [key value ...]
+mset key1 value1 key2 value2
+获取获取键值：mget key [key ...]
+获取值长度：strlen key
+追加内容：append key value
+获取部分字符：getrange key start end
+
+列表操作命令：
+存储值：
+左端存值语法：lpush key value [value ...]
+右端存值语法：rpush key value [value ...]
+弹出元素：左端：lpop key 右端：rpop key
+获取元素个数：llen key
+获取列表元素：
+   两边获取语法：lrange key start stop
+   索引获取语法：lindex key index
+删除元素：
+   根据值删除语法：lrem key count value
+   范围删除语法：ltrim key start stop
+
+集合操作命令：
+存储值：sadd key member [member ...]
+获取元素：smembers key
+判断集合是否存在元素：sismember key member
+获取集合元素个数：scard key
+删除集合元素：srem key member [member ...]
+弹出元素：spop key [count]
+
+有序集合：
+存储值：zadd key [NX|XX] [CH] [INCR] score member [score member ...]
+获取元素分数：zscore key member
+增加指定元素分数：zincrby key increment member
+获取集合元素个数：zcard key
+获取指定范围分数个数：zcount key min max
+删除指定元素：zrem key member [member ...]
+获取元素排名：zrank key member
+
+散列操作命令：
+存放键值：
+   单个语法：hset key field value
+   多个语法：hmset key field value [field value ...]
+获取字段值：
+   单个语法：hget key field
+   多个语法：hmget key field [field ...]
+   获取所有键与值语法：hgetall key
+   获取所有字段语法：hkeys key
+   获取所有值语法：hvals key
+判断字段是否存在：hexists key field
+获取字段数量：hlen key
+递增/减：hincrby key field increment
+删除字段：hdel key field [field ...]
+
+安全设置建议：
+一、
+1 用redis用户启动redis服务，避免使用root用户启动
+2 为redis配置强度较高的密码，不要使用空密码、弱密码或者默认密码
+3 限定redis只能从特定主机访问，如127.0.0.1，而非允许所有主机0.0.0.0
+4 修改默认6379端口
+5 禁用特殊的命令，如flushall、config等
+6 为redis服务所在的主机配置一道坚实的防火墙
+
+二、
+1. 通过配置rename-command CONFIG “”，禁用一些命令。(某些必须以高权限运行的，可以借鉴该方案)：
+修改redis.conf文件，增加：
+rename-command flushall ""
+rename-command flushdb ""
+rename-command config ""
+rename-command eval ""
+2. 以低权限启动redis：
+切换到其他用户su - xxx，然后再启动server(切换是否注意之前文件权限，也需要相应修改)。
+3. 给redis增加验证：
+   修改redis.conf文件：requirepass mypassword
+4. 禁止对公网开放，将端口绑定到固定IP
+   修改redis.conf文件
+   bind 127.0.0.1
+5. 检查用户.ssh目录下是否已经存在非法的authorized_keys文件
+

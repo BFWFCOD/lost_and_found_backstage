@@ -1,0 +1,19 @@
+nginx容器内的目录结构说明：
+/etc/nginx/nginx.conf      nginx配置文件
+/etc/nginx/conf.d          自定义的配置文件目录
+/usr/share/nginx/html/     项目文件目录
+/var/log/nginx/            日志文件目录
+/etc/nginx                 其他文件目录
+
+重启可以使用docker restart nginx
+但是这种方式有很大的缺点，如果nginx启动有问题，不能很清楚的知道问题在哪，而且不能正常访问nginx
+可以用idea远程连接docker，点开nginx看log，可以看到相关信息。（怎么远程docker推荐百度，一定不要无密钥开放2375，我就是个例子，配置请参考：https://blog.csdn.net/qq_39503880/article/details/107853966）
+推荐进入容器后，再使用命令重启nginx：
+
+1.
+进入运行的容器: docker exec + 选项 + 容器名 + 命令 + 参数
+  docker exec -it nginx /bin/bash   # -it是以交互模式
+2.
+nginx -t                   测试config是否有误  
+3.    
+nginx -s reload            重启nginx服务

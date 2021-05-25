@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.bfcod.lost_and_found.dao.StudentDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="cn.bfcod.lost_and_found.entity.StudentEntity" id="studentMap">
+        <result property="id" column="ID"/>
+        <result property="studentNo" column="Student_No"/>
+        <result property="studentName" column="Student_Name"/>
+        <result property="password" column="Password"/>
+        <result property="className" column="Class_Name"/>
+        <result property="specialtyName" column="specialty_Name"/>
+        <result property="phone" column="Phone"/>
+        <result property="qq" column="QQ"/>
+        <result property="email" column="Email"/>
+        <result property="isNew" column="Is_New"/>
+        <result property="delStatus" column="Del_Status"/>
+    </resultMap>
+
+
+</mapper>

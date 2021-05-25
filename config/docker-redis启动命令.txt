@@ -1,0 +1,7 @@
+要先在服务器构建外部映射目录、文件：/mydata/redis/data、/mydata/redis/conf/redis.conf
+
+sudo docker run -p 此处为外部要映射的端口:6379 --name redis -v /mydata/redis/data:/data -v /mydata/redis/conf/redis.conf:/etc/redis/redis.conf -d redis redis-server /etc/redis/redis.conf --requirepass "这里填密码"
+
+用redis-cli工具进入redis库：
+docker exec -it redis redis-cli
+auth password

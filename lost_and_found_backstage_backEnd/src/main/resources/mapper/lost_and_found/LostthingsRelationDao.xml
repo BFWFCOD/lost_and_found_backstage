@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.bfcod.lost_and_found.dao.LostthingsRelationDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="cn.bfcod.lost_and_found.entity.LostthingsRelationEntity" id="lostthingsRelationMap">
+        <result property="id" column="id"/>
+        <result property="lostthingsId" column="lostthings_id"/>
+        <result property="studentId" column="student_id"/>
+        <result property="lostthingsName" column="lostthings_name"/>
+        <result property="studentName" column="student_name"/>
+    </resultMap>
+
+
+</mapper>

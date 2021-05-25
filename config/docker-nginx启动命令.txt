@@ -1,0 +1,17 @@
+mkdir -p   /mydata/nginx /mydata/nginx/www /mydata/nginx/los /mydata/nginx/conf/ssls /mydata/nginx/conf/conf.d
+touch /mydata/nginx/conf/nginx.conf
+记得在www目录里建一个index.html，等会可以测试nginx启动是否成功
+
+docker run -d --name nginx --net host -v /mydata/nginx/www:/usr/share/nginx/html -v /mydata/nginx/logs:/var/log/nginx -v /mydata/nginx/conf/ssls:/etc/nginx/ssls -v /mydata/nginx/conf/conf.d:/etc/nginx/conf.d -v /mydata/nginx/conf/nginx.conf:/etc/nginx/nginx.conf nginx
+
+命令说明：
+--name nginx：将容器命名为 nginx
+--net host：容器和宿主机共用网络，如果nginx涉及到多个端口，推荐使用这种方式
+-v /mydata/nginx/www:/usr/share/nginx/html：将宿主机的www目录挂载到容器的/usr/share/nginx/html目录
+-v /mydata/nginx/logs:/var/log/nginx：将宿主机的logs挂载到容器的/var/log/nginx目录
+-v /mydata/nginx/conf/ssls:/etc/nginx/ssls：将宿主机的ssls目录挂载到容器的/mydata/nginx/conf/ssls目录
+-v /mydata/nginx/conf/nginx.conf:/etc/nginx/nginx.conf：将宿主机的nginx.conf文件挂载到容器的/etc/nginx/nginx.conf文件
+-v /mydata/nginx/conf/conf.d:/etc/nginx/conf.d：将宿主机的conf.d目录挂载到容器的conf.d目录
+-d：后台运行
+
+
