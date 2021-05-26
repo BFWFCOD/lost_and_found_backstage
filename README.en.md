@@ -3,6 +3,16 @@
 #### Description
 失物招领系统后台项目，“lost_and_found_backstage_frontEnd”为前端，“lost_and_found_backstage_backEnd”为后端。
 
+![登录](https://gitee.com/bfcod/lost_and_found_backstage/raw/master/img/backstage_login.png)
+
+![登陆后的首页](https://gitee.com/bfcod/lost_and_found_backstage/raw/master/img/backstage_domain.png)
+
+![帖子列表](https://gitee.com/bfcod/lost_and_found_backstage/raw/master/img/backstage_postInfo.png)
+
+![帖子信息](https://gitee.com/bfcod/lost_and_found_backstage/raw/master/img/backstage_checkPostInfo.png)
+
+![更改密码](https://gitee.com/bfcod/lost_and_found_backstage/raw/master/img/backstage_updatePwd.png)
+
 #### Software Architecture
 Software architecture description
 软件架构说明：项目基于人人开源框架：https://gitee.com/renrenio
